@@ -1,0 +1,52 @@
+﻿@media only screen and (max-width:1200px) {
+    .plan__heading {
+        font-size: 1.2rem;
+        width: 15rem;
+        text-align: center;
+        right: 0rem;
+    }
+
+    .plan__bullets ul li {
+        font-size: 1rem;
+        padding: 0rem;
+    }
+}
+
+/* Smaller tablets to larger tablet screens*/
+@media only screen and (max-width:1023px) {
+    html,
+    body {
+        font-size: 12px;
+    }
+
+    .plan__heading {
+        font-size: 1.2rem;
+        width: 20rem;
+        text-align: center;
+        right: 0rem;
+    }
+
+    .logo {
+        margin-top: 4rem;
+    }
+}
+
+/* larger phones  to smaller tablet screens*/
+@media only screen and (max-width:767px) {
+    .plan {
+        width: 20rem;
+        margin-right: 30rem;
+    }
+
+    .col-1-of-3 {
+        align-content: center;
+    }
+
+    .team-mate {
+        margin-top: 3rem;
+    }
+}
+
+/* smaller to larger mobile phones*/
+@media only screen and (max-width:480px) {
+}

@@ -59,9 +59,23 @@ namespace ProjectApplication.Areas.FOA.Contollers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                customer.Email = customer.Email.Trim();
+                bool ifduplicatefound = _context.Customers.Any(m => m.Email == customer.Email);
+                bool ifduplicatefound2 = _context.Customers.Any(m => m.MobileNumber == customer.MobileNumber);
+                if (ifduplicatefound)
+                {
+                    ModelState.AddModelError("Email", "This Mail Already exsist!");
+                }
+                else if(ifduplicatefound2){
+                    ModelState.AddModelError("MobileNumber", "This Moobile Number Already exsist!");
+                }
+                else
+                {
+
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             return View(customer);
         }
@@ -96,23 +110,44 @@ namespace ProjectApplication.Areas.FOA.Contollers
 
             if (ModelState.IsValid)
             {
-                try
+                customer.Email =customer.Email.Trim();
+
+                bool dupf= _context.Customers.Any(a=> a.Email == customer.Email && a.CustomerId!=customer.CustomerId);
+                bool dupf2= _context.Customers.Any(a=> a.MobileNumber == customer.MobileNumber && a.CustomerId!=customer.CustomerId);
+
+                if (dupf)
                 {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
+                    ModelState.AddModelError("Email", "Already Exsist!");
                 }
-                catch (DbUpdateConcurrencyException)
+                else if (dupf2)
                 {
-                    if (!CustomerExists(customer.CustomerId))
+                    ModelState.AddModelError("MobileNumber", "Already Exsist!");
+
+                }
+                else
+                {
+                    try
                     {
-                        return NotFound();
+                        _context.Update(customer);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!CustomerExists(customer.CustomerId))
+                        {
+
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-                return RedirectToAction(nameof(Index));
+
+                
+                
             }
             return View(customer);
         }
