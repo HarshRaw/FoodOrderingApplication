@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ProjectApplication</title>
+    <title>@ViewData["Title"] - LMS.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,7 +11,10 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ProjectApplication</a>
+                
+              @*  <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/imgs/logo.png" style="width:100px" />
+                </a>*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,6 +27,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                       @* <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Manage</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" 
+                                   asp-area="Books" asp-controller="Categories" asp-action="Index">Categories</a>
+                                <a class="dropdown-item"
+                                   asp-area="Books" asp-controller="Books" asp-action="Index">Books</a>
+                                <a class="dropdown-item"
+                                   asp-area="Books" asp-controller="Authors" asp-action="Index">Authors</a>
+                            </div>
+                        </li>*@
                     </ul>
                 </div>
             </div>
@@ -35,11 +49,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+   @* <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - ProjectApplication - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - Manoj Kumar Sharma - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
