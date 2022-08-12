@@ -28,9 +28,8 @@ namespace ProjectApplication.Models
 
 
 
-        [Required]
         [Display(Name = "Date")]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; }= DateTime.Now;
 
 
 
@@ -74,7 +73,7 @@ namespace ProjectApplication.Models
         [Required]
         [DataType(DataType.Currency)]
         [Display(Name ="Price")]
-        public float Price { get; set; }
+        public float Price { get; set; } 
 
         [Required]
         [DefaultValue(true)]

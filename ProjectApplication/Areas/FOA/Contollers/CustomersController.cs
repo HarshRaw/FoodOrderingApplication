@@ -62,12 +62,13 @@ namespace ProjectApplication.Areas.FOA.Contollers
                 customer.Email = customer.Email.Trim();
                 bool ifduplicatefound = _context.Customers.Any(m => m.Email == customer.Email);
                 bool ifduplicatefound2 = _context.Customers.Any(m => m.MobileNumber == customer.MobileNumber);
-                if (ifduplicatefound)
+                if (ifduplicatefound2)
                 {
-                    ModelState.AddModelError("Email", "This Mail Already exsist!");
-                }
-                else if(ifduplicatefound2){
                     ModelState.AddModelError("MobileNumber", "This Moobile Number Already exsist!");
+                }
+                else if(ifduplicatefound){
+                    
+                    ModelState.AddModelError("Email", "This Mail Already exsist!");
                 }
                 else
                 {
@@ -115,14 +116,15 @@ namespace ProjectApplication.Areas.FOA.Contollers
                 bool dupf= _context.Customers.Any(a=> a.Email == customer.Email && a.CustomerId!=customer.CustomerId);
                 bool dupf2= _context.Customers.Any(a=> a.MobileNumber == customer.MobileNumber && a.CustomerId!=customer.CustomerId);
 
-                if (dupf)
-                {
-                    ModelState.AddModelError("Email", "Already Exsist!");
-                }
-                else if (dupf2)
+                if (dupf2)
                 {
                     ModelState.AddModelError("MobileNumber", "Already Exsist!");
+                    
+                }
+                else if (dupf)
+                {
 
+                    ModelState.AddModelError("Email", "Already Exsist!");
                 }
                 else
                 {

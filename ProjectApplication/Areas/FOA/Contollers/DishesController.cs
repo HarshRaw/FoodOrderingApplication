@@ -27,6 +27,40 @@ namespace ProjectApplication.Areas.FOA.Contollers
             return View(await projectDbContext.ToListAsync());
         }
 
+
+
+        // GET: FOA/Dishes Index 2
+        public async Task<IActionResult> Index2()
+        {
+            var projectDbContext = _context.Dishes.Include(d => d.DishCategory);
+            return View(await projectDbContext.ToListAsync());
+        }
+
+        // GET: FOA/Dishes Index 3
+        public async Task<IActionResult> Index3()
+        {
+            var projectDbContext = _context.Dishes.Include(d => d.DishCategory);
+            return View(await projectDbContext.ToListAsync());
+        }
+
+
+        // GET: FOA/Dishes Index 4
+        public async Task<IActionResult> Index4()
+        {
+            var projectDbContext = _context.Dishes.Include(d => d.DishCategory);
+            return View(await projectDbContext.ToListAsync());
+        }
+
+
+        // GET: FOA/Dishes Index 5
+        public async Task<IActionResult> Index5()
+        {
+            var projectDbContext = _context.Dishes.Include(d => d.DishCategory);
+            return View(await projectDbContext.ToListAsync());
+        }
+
+
+
         // GET: FOA/Dishes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -64,11 +98,12 @@ namespace ProjectApplication.Areas.FOA.Contollers
             {
                 _context.Add(dish);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index2));
             }
             ViewData["DishCategoryID"] = new SelectList(_context.DishCategories, "DcId", "Categories", dish.DishCategoryID);
             return View(dish);
         }
+        
 
         // GET: FOA/Dishes/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -117,7 +152,7 @@ namespace ProjectApplication.Areas.FOA.Contollers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index2)); // Change made here
             }
             ViewData["DishCategoryID"] = new SelectList(_context.DishCategories, "DcId", "Categories", dish.DishCategoryID);
             return View(dish);
@@ -150,7 +185,7 @@ namespace ProjectApplication.Areas.FOA.Contollers
             var dish = await _context.Dishes.FindAsync(id);
             _context.Dishes.Remove(dish);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index2));
         }
 
         private bool DishExists(int id)

@@ -66,7 +66,9 @@ namespace ProjectApplication.Areas.FOA.Contollers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(order);
+                //order.Price = order.Quantity * ;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

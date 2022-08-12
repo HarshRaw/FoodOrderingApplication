@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ProjectApplication.Models.Dish>
+
+@{
+    ViewData["Title"] = "Menu";
+}
+<div style="padding:2rem">
+<h1 style="text-align:center;color:#fff">@ViewData["Title"]</h1>
+<hr style="accent-color:#fff;background-color:#fff"/>
+<p style="color:#fff">
+    <a class="btn " asp-area="FOA" asp-controller="Tables" asp-action="Index" style="color:#fff">Reserve Your Table</a>
+</p>
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DishCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DishName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgUrl)
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>*@
+<body style="background-color:Black;max-height:100rem">
+@foreach (var item in Model) {
+
+           if(item.DishCategory.Categories=="Chinese")
+@*            if (@Html.DisplayFor(modelItem => item.DishCategory.Categories).ToString()=="Drinks")
+*@            {
+
+
+                <div class="card text-center  bg-dark" style="width:16.2rem;float:left;overflow:hidden;margin:1rem;color:white">
+
+                    <img class="card-img-top" src="@item.ImgUrl" alt="@item.DishName" style="width:16rem;height:17rem;">
+
+                    <h4 class="card-title font-italic font-weight-normal">
+                        @item.DishName
+                    </h4>
+                    <div class="row">
+                        <div class="col card-text">
+                            @Html.DisplayNameFor(modelItem => item.Available)
+                        </div>
+                        <div class="col card-text">
+                            @Html.DisplayFor(modelItem => item.Available)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col card-text">
+                            @Html.DisplayNameFor(modelItem => item.Price)
+                        </div>
+                        <div class="col card-text">
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col card-text">
+                            @Html.DisplayFor(modelItem => item.DishCategory.Categories)
+                        </div>
+
+                    </div>
+
+                    <a asp-area="FOA" asp-controller ="Orders" asp-action="Create"class="btn btn-primary">Order Now</a>
+
+
+
+                </div>
+            }
+
+}
+@*    </tbody>
+</table>
+*@
+</body>
+</div>
